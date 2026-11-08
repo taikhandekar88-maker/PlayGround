@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#101114" />
+  <title>Neon Clash — Arena Brawl</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
+  <script type="module" src="game.js"></script>
+</head>
+<body>
+  <main class="game-shell">
+    <canvas id="game" aria-label="3D fighting game arena"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Neon Clash home"><span class="brand-mark">N</span><span>NEON<span class="brand-muted">CLASH</span></span></a>
+      <div class="round-pill"><span class="live-dot"></span> RANKED ARENA <i>•</i> <b>01</b></div>
+      <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound"><span class="sound-icon">♪</span><span class="sound-label">SOUND ON</span></button>
+    </header>
+    <section class="fight-hud" aria-label="Fight status">
+      <div class="fighter-card player-card">
+        <div class="fighter-meta"><span class="fighter-name">NOVA</span><span class="fighter-tag">THE COMET</span></div>
+        <div class="health-track"><div class="health-fill player-health" id="playerHealth"></div><span class="health-glint"></span></div>
+        <div class="meter-row"><span class="level-label">LV. 08</span><div class="meter-track"><div class="meter-fill" id="playerMeter"></div></div><span class="meter-label">SUPER</span></div>
+      </div>
+      <div class="timer-wrap"><div class="timer" id="timer">60</div><div class="round-label">ROUND <b>01</b></div></div>
+      <div class="fighter-card cpu-card">
+        <div class="fighter-meta"><span class="fighter-tag">THE IRON WALL</span><span class="fighter-name">TITAN</span></div>
+        <div class="health-track"><div class="health-fill cpu-health" id="cpuHealth"></div><span class="health-glint"></span></div>
+        <div class="meter-row"><span class="meter-label">RIVAL</span><div class="meter-track"><div class="meter-fill cpu-meter" id="cpuMeter"></div></div><span class="level-label">LV. 09</span></div>
+      </div>
+    </section>
+    <div class="match-callout" id="callout"><span>FIGHT!</span></div>
+    <div class="combo-toast" id="comboToast">3 HIT COMBO!</div>
+    <section class="bottom-ui">
+      <div class="controls-hint"><span class="hint-key">A</span><span class="hint-key">D</span><span>MOVE</span><span class="hint-divider">·</span><span class="hint-key">W</span><span>JUMP</span></div>
+      <div class="move-list"><span class="move-title">QUICK MOVES</span><span><b>J</b> STRIKE</span><span><b>K</b> HEAVY</span><span><b>L</b> SPECIAL</span></div>
+      <div class="touch-controls" aria-label="Touch controls">
+        <div class="dpad" id="dpad"><button class="dpad-up" data-action="jump" aria-label="Jump">▲</button><button class="dpad-left" data-action="left" aria-label="Move left">◀</button><span class="dpad-center">✦</span><button class="dpad-right" data-action="right" aria-label="Move right">▶</button></div>
+        <div class="action-pad"><button class="action-btn btn-kick" data-action="heavy" aria-label="Heavy attack"><span>HEAVY</span><b>K</b></button><button class="action-btn btn-special" data-action="special" aria-label="Special attack"><span>SPECIAL</span><b>L</b></button><button class="action-btn btn-hit" data-action="strike" aria-label="Strike"><span>STRIKE</span><b>J</b></button></div>
+      </div>
+    </section>
+    <div class="screen-overlay" id="screenOverlay">
+      <div class="overlay-card">
+        <div class="eyebrow"><span></span> THE UNDERGROUND CIRCUIT <span></span></div>
+        <h1>NEON<br><em>CLASH</em></h1>
+        <p class="overlay-copy">One arena. Two legends. Only one walks out.</p>
+        <div class="versus"><div class="versus-fighter"><span class="portrait portrait-nova">N</span><div><b>NOVA</b><small>THE COMET</small></div></div><span class="versus-mark">VS</span><div class="versus-fighter right"><span class="portrait portrait-titan">T</span><div><b>TITAN</b><small>THE IRON WALL</small></div></div></div>
+        <button id="startButton" class="start-button"><span>ENTER THE ARENA</span><b>↗</b></button>
+        <div class="overlay-foot"><span>WASD / ARROWS TO MOVE</span><span>J · K · L TO FIGHT</span></div>
+      </div>
+      <div class="overlay-corner corner-tl">NC / 01</div><div class="overlay-corner corner-br">SEASON 04 — 2089</div>
+    </div>
+    <div class="result-overlay hidden" id="resultOverlay"><div class="result-card"><div class="eyebrow">MATCH COMPLETE</div><h2 id="resultTitle">VICTORY</h2><p id="resultCopy">The crowd knows your name.</p><button class="start-button" id="rematchButton"><span>FIGHT AGAIN</span><b>↻</b></button></div></div>
+    <div class="flash" id="flash"></div>
+    <footer class="footer"><span>NEON CLASH <i>©</i> 2089</span><span>BUILT FOR THE BOLD <b>✦</b></span></footer>
+  </main>
+</body>
+</html>
